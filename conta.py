@@ -21,11 +21,24 @@ class Conta:
         self.retira(valor)
         destino.deposita(valor)
 
+    def get_saldo(self):
+        return self.__saldo
+
+    def get_titular(self):
+        return self.__titular
+
+    def get_limite(self):
+        return self.__limite
+
+    def set_limite(self, limite):
+        self.__limite = limite
+
+
 """
 Aqui são os comandos utilizados no console do PyCharm para realizar as consultas
 
 from conta import Conta #informa o arquivo py e puxa a classe desejada
-conta = Conta (123, "Monique", 100.0, 500.0) #cria um novo objeto dentro da classe
+conta = Conta (123, "Monique", 300.0, 500.0) #cria um novo objeto dentro da classe
 conta2 = Conta (321, "Joao", 100.0, 500.0) 
 conta._Conta__saldo #consulta o saldo
 conta.extrato() #extrato do saldo
