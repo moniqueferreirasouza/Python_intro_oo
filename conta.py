@@ -14,8 +14,15 @@ class Conta:
     def deposita(self, valor):
         self.__saldo += valor
 
+    def __pode_retirar(self, valor_a_retirar):
+        valor_disponivel_retirada = self.__saldo + self.__limite
+        return valor_a_retirar <= (valor_disponivel_retirada)
+
     def retira(self, valor):
-        self.__saldo -= valor
+        if(self.__pode_retirar(valor)):
+            self.__saldo -= valor
+        else:
+            print("O saque {} é maior que o valor permitido, seu saque máximo é de {}.".format(valor, self.__saldo + self.__limite))
 
     def transfere(self, valor, destino):
         self.retira(valor)
@@ -35,6 +42,13 @@ class Conta:
     def limite(self, limite):
         self.__limite = limite
 
+    @staticmethod#Cria um método visível para chamar um resultado não modificável
+    def codigo_banco():
+        return "001"
+
+    @staticmethod#Cria um método visível para chamar um resultado não modificável
+    def codigos_bancos():
+        return {'BB': '001', 'Caixa': '104', 'Bradesco': '237'}
 
 """
 Aqui são os comandos utilizados no console do PyCharm para realizar as consultas
